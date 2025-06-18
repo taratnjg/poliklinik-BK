@@ -5,12 +5,12 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
-use App\Models\JadwalPeriksa; // Tambahkan ini
-use App\Models\JanjiPeriksa; // Tambahkan ini
 
 class User extends Authenticatable
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -18,7 +18,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-   protected $fillable = [
+    protected $fillable = [
         'nama',
         'email',
         'password',
@@ -27,7 +27,7 @@ class User extends Authenticatable
         'no_ktp',
         'no_hp',
         'no_rm',
-        'poli',
+        'id_poli',
     ];
 
     /**
@@ -61,5 +61,9 @@ class User extends Authenticatable
     public function janjiPeriksas()
     {
         return $this->hasMany(JanjiPeriksa::class, 'id_pasien');
+    }
+    public function poli(): BelongsTo
+    {
+        return $this->belongsTo(Poli::class, 'id_poli');
     }
 }

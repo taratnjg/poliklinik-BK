@@ -11,6 +11,7 @@ use Illuminate\View\View;
 
 class JadwalPeriksaController extends Controller
 {
+
     public function index(): View
     {
         // Ambil data jadwal periksa dokter yang sedang login

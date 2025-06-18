@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             JanjiPeriksaSeeder::class,
             PeriksaSeeder::class,
             DetailPeriksaSeeder::class,
+            PoliSeeder::class
         ]);
     }
 }
